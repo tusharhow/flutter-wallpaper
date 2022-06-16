@@ -11,7 +11,7 @@ class DetailsPage extends StatelessWidget {
     Future<void> setWallpaper() async {
       try {
         String url = image;
-        int location = WallpaperManager.BOTH_SCREEN;
+        int location = WallpaperManager.HOME_SCREEN;
         var file = await DefaultCacheManager().getSingleFile(url);
         final bool result =
             await WallpaperManager.setWallpaperFromFile(file.path, location)
@@ -65,9 +65,7 @@ class DetailsPage extends StatelessWidget {
           Positioned(
             bottom: 0,
             child: GestureDetector(
-              onTap: () {
-                setWallpaper();
-              },
+              onTap: setWallpaper,
               child: Container(
                 width: MediaQuery.of(context).size.width,
                 height: 60,
